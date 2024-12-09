@@ -41,3 +41,20 @@ SF from is study friend friend
     <script src="script.js"></script>
 </body>
 </html>
+document.getElementById('quiz-form').addEventListener('submit', function(event) {
+    event.preventDefault();
+    let score = 0;
+    const answers = {
+        q1: 'a',
+        q2: 'b',
+    };
+
+    const formData = new FormData(event.target);
+    for (const [name, value] of formData) {
+        if (answers[name] === value) {
+            score++;
+        }
+    }
+
+    alert('Your score: ' + score + '/' + Object.keys(answers).length);
+});
